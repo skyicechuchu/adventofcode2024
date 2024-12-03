@@ -4,6 +4,9 @@ import re
 """
 Nothing related to algo. Play with the regular expression. 
 There should be some method using awk/sed linux command which can achieve this easily.
+reference from https://www.reddit.com/r/adventofcode/comments/1h5frsp/comment/m08demp/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+Q1: sed -E 's/mul/\nmul/g' input_dec_3.txt | sed -nE 's/.*mul\(([0-9]+),([0-9]+)\).*/\1\*\2/p' | paste -sd+ - | bc
+Q2: paste -s input_dec_3.txt | sed -E "s/don't/\ndon't/g" | sed -E "s/do\(\)/\ndo\(\)/g" | grep -v "^don" | sed -E 's/mul/\nmul/g' | sed -nE 's/.*mul\(([0-9]+),([0-9]+)\).*/\1\*\2/p' | paste -sd+ - | bc
 """
 
 def get_input_data():
