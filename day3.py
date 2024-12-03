@@ -2,6 +2,8 @@ import util
 import re
 
 """
+Nothing related to algo. Play with the regular expression. 
+There should be some method using awk/sed linux command which can achieve this easily.
 """
 
 def get_input_data():
