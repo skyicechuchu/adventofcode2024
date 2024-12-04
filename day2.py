@@ -6,19 +6,8 @@ Q2: the time is O(mn^2)
 Algo key point: operate the list, remove a element, all(), any(), zip()
 """
 
-def get_input_data():
-    aoc_session = util.login_advent_of_code()
-    if aoc_session:
-        day = 2
-        input_url = f'https://adventofcode.com/2024/day/{day}/input'
-        input_response = aoc_session.get(input_url)
-        puzzle_input = input_response.text.strip()
-        return puzzle_input
-    else:
-        return ""
-
 def parse_input():
-    puzzle_input = get_input_data()
+    puzzle_input = util.get_input_data(2)
     reports= []
     for line in puzzle_input.split("\n"):
         levels = line.strip().split(" ")

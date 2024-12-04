@@ -8,25 +8,6 @@ from scratch on Merge-sort, Quick-sort
 2. hash counter: O(n), get counts on listB, then A get frequency is O(1)
 """
 
-def get_input_data():
-    """Fetches the input data for the Advent of Code puzzle.
-
-    Logs into the Advent of Code website using the session from 'util', and fetches
-    the puzzle input for day 1.
-
-    Returns:
-        str: The raw puzzle input as a string.
-    """
-    aoc_session = util.login_advent_of_code()
-    if aoc_session:
-        day = 1
-        input_url = f'https://adventofcode.com/2024/day/{day}/input'
-        input_response = aoc_session.get(input_url)
-        puzzle_input = input_response.text.strip()
-        return puzzle_input
-    else:
-        return ""
-
 def parse_input():
     """Parses the raw puzzle input into two lists of integers.
 
@@ -36,7 +17,7 @@ def parse_input():
     Returns:
         tuple: A tuple containing two lists of integers (list_a, list_b).
     """
-    puzzle_input = get_input_data()
+    puzzle_input = util.get_input_data(1)
     list_a = []
     list_b = []
     for line in puzzle_input.split("\n"):
