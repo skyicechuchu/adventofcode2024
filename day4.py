@@ -1,12 +1,15 @@
 import util
 import numpy as np
 from typing import List
+
 """
 Key point: handle 2D matrix
 1. numpy usage: np.transpose(), arr.diagonal(), np.fliplr()
 2. matrix array slicing
+3. Q1: O(m+n); Q2: O(mn)
 Start to use python3 format with argument type
 """
+
 def parse_input() -> List[List[str]]:
     """Parses the puzzle input into a 2D matrix of characters.
 
