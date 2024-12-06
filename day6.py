@@ -1,5 +1,10 @@
 import util
 
+"""
+Q1: O(m+n) 2D graph handel
+Q2: ugly brute force. O(n^2), scan all elements and treat as block. Need find O(n) on redit
+"""
+
 DIRECTIONS = [(-1, 0), (0, 1), (1, 0), (0, -1)]
 
 class GuardPathFinder:
