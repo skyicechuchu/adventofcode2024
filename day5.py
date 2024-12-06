@@ -2,8 +2,9 @@ import util
 from collections import defaultdict, deque
 """
 Q1: I use Topological Sort, then there is no head (in-degree=0) node which means it is no DAG.
-Then I just build dependency graph.
-Q2: use bubble sort
+Then I just build dependency graph as a hashmap. Build the dependency graph is O(m+n), then valid the page using this hash map.
+Each query in graph will be O(1) and n times operation for all pages. O(n)
+Q2: use bubble sort O(n^2), this should improve with merge sort. I will do later.
 
 """
 
