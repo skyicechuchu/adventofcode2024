@@ -4,10 +4,8 @@ from collections import defaultdict, deque
 Q1: I use Topological Sort, then there is no head (in-degree=0) node which means it is no DAG.
 Then I just build dependency graph as a hashmap. Build the dependency graph is O(m+n), then valid the page using this hash map.
 Each query in graph will be O(1) and n times operation for all pages. O(n)
-Q2: use bubble sort O(n^2), this should improve with merge sort. I will do later.
-
+Q2: use merge sort O(nlogn), each page number is O(nlogn)
 """
-
 def parse_input():
     puzzle_input = util.get_input_data(5)
     dependency = []
@@ -94,22 +92,52 @@ def brute_force_q2():
     for page in page_numbers:
         l = page.split(",")
         l = [int(i) for i in l]
-        flag, res_list = brute_force_valid_sort(graph, l)
-        if not flag:
+        res_list = merge_sort_valid(graph, l)
+        if res_list != l:
             res += res_list[len(res_list) // 2]
     return res
 
 def brute_force_valid_sort(graph, l):
-    flag = True
     res = l.copy()
     n = len(l)
-
     for i in range(n):
         for j in range(0, n - i - 1):
             if res[j+1] not in graph[res[j]]:
-                flag = False
                 res[j], res[j+1] = res[j+1], res[j]
-    return flag, res  
+    return res  
+
+def merge_sort_valid(graph, arr):
+    def merge(left, right):
+        merged = []
+        i = j = 0
+        while i < len(left) and j < len(right):
+            if right[j] in graph[left[i]]:
+                merged.append(left[i])
+                i += 1
+            elif left[i] in graph[right[j]]:
+                merged.append(right[j])
+                j += 1
+            else:
+                return []
+        
+        while i < len(left):
+            merged.append(left[i])
+            i += 1
+        while j < len(right):
+            merged.append(right[j])
+            j += 1
+        return merged
+
+    def merge_sort(arr):
+        if len(arr) <= 1:
+            return arr
+        
+        mid = len(arr) // 2
+        left = merge_sort(arr[:mid])
+        right = merge_sort(arr[mid:])
+
+        return merge(left, right)
+    return merge_sort(arr)
 
 def main():
     print(brute_force_q1())
