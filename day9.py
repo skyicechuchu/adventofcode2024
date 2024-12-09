@@ -60,7 +60,6 @@ def q2(nums):
             
             for i in range(file_size):
                 blocks[best_move + i] = file_num
-    print(blocks)
     total = 0
     for i , val in enumerate(blocks):
         if val == ".":
