@@ -1,6 +1,5 @@
 import re
 import util
-import numpy as np
 
 
 def parse_claw_machine_configs(input_text, mode="q1"):
